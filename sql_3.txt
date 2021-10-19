@@ -1,0 +1,86 @@
+1. Создайте базу из представленной картинки.
+      - У каждой таблицы должно быть поле id
+      - id автоинкрементальный и является первичным ключом
+create table employees_2 (
+id serial primary key,
+employee_name varchar (50) not null)
+
+create table employees_roles_35 (
+id serial primary key,
+id_role int4 not null,
+id_employee int4 not null)
+
+create table roles_35 (
+id serial primary key,
+role_title varchar (50) not null)
+
+create table roles_salary_35 (
+id serial primary key,
+id_role int4 not null,
+id_salary int4 not null)
+
+create table salary_35 (
+id serial primary key,
+monthly_salary int4 not null)
+
+create table claim_35 (
+id serial primary key,
+service_id int4 not null,
+employee_id int4 not null,
+material_id int4 not null,
+clame_date date not null,
+sales_manager int4 not null)
+
+create table Service_35_22 (
+id serial primary key,
+service_title varchar (50) not null,
+price int4 not null)
+
+create table materials (
+id serial primary key,
+material_title varchar (50) not null,
+amount int4 not null,
+price int4 not null)
+
+
+
+ 2. Заполните таблицы данными. Не менее 10 строк в каждой таблице
+insert into employees_35 (id, employee_name) values (default, 'Svetlana Karpova', 
+'Alexandr Petrov'
+'Ivan Ivanov'
+'Anna Sidorovich'
+'Milana Ahmatova'
+'Vladimir Grishin'
+'Vadim Vetrov'
+'Elena Poluk'
+'Elena Suslova'
+'Vlad Polev');
+
+ 3. Добавить таблицу Suppliers с полями id, name
+create table Suppliers_35 (
+id serial primary key,
+suppliers_name varchar (50) not null);
+
+ 4. Добавить 10 строк поставщиков в таблицу Suppliers
+insert into suppliers_35 (id, suppliers_name) values (default, 'Komus'
+'D. Sasha'
+'Aqua Minerale'
+'IKEA'
+'ABC'
+'DFE'
+'HGI'
+'KLM'
+'NOP'
+'XYZ');
+
+ 5. Обновить таблицу Materials. Добавить поле suplier_id которое связано с полем id в таблице Suppliers
+alter table materials 
+add constraint cons_fk
+foreign key (suplier_id)
+references suppliers_35(id);
+
+ 6. Обновить таблицу Employees. Добавить varchar поле surname на 50 символов.
+ALTER TABLE public.employees_35 ADD COLUMN Surname VARCHAR (50)
+
+ 7. Обновить таблицу Salary. Добавить varchar поле currency на 7 символов.
+ALTER TABLE public.salary_35 ADD COLUMN currency VARCHAR (7)
